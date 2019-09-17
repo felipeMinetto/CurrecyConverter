@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CurrencyConverter</string>
+    <string name="zero">0</string>
+    <string name="pln">PLN</string>
+    <string name="usd">USD</string>
 </resources>
