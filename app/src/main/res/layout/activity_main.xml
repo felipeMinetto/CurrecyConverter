@@ -11,25 +11,26 @@
         <View
             android:id="@+id/base_background"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="200dp"
             android:background="#CDF"
-            app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintBottom_toTopOf="@+id/convert_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@string/usd"
+            android:text="@string/pln"
             android:textColor="#555"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/editText"
-            app:layout_constraintStart_toEndOf="@+id/editText"
-            app:layout_constraintTop_toTopOf="@+id/editText" />
+            app:layout_constraintBottom_toBottomOf="@+id/base_value"
+            app:layout_constraintStart_toEndOf="@+id/base_value"
+            app:layout_constraintTop_toTopOf="@+id/base_value" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -39,19 +40,20 @@
             app:layout_constraintBottom_toBottomOf="@id/base_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/base_background"
-            app:srcCompat="@drawable/usa_flag"
+            app:srcCompat="@drawable/poland_flag"
             tools:layout_editor_absoluteY="16dp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/base_value"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="80dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:ems="10"
             android:gravity="center_vertical|end"
+            android:hint="@string/zero"
             android:inputType="numberDecimal"
-            android:text="@string/zero"
+            android:textAllCaps="false"
             android:textColor="#555"
             app:layout_constraintBottom_toBottomOf="@+id/base_background"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +62,7 @@
         <View
             android:id="@+id/convert_background"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="200dp"
             android:background="#CFD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="@string/pln"
+            android:text="@string/usd"
             android:textColor="#555"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/convert_value"
@@ -81,14 +83,15 @@
 
         <EditText
             android:id="@+id/convert_value"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="80dp"
             android:layout_height="48dp"
             android:layout_marginEnd="8dp"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:ems="10"
             android:gravity="center_vertical|end"
+            android:hint="@string/zero"
             android:inputType="numberDecimal"
-            android:text="@string/zero"
+            android:textAllCaps="false"
             android:textColor="#555"
             app:layout_constraintBottom_toBottomOf="@+id/convert_background"
             app:layout_constraintEnd_toStartOf="@+id/convert_curr"
@@ -102,7 +105,7 @@
             app:layout_constraintBottom_toBottomOf="@id/convert_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/convert_background"
-            app:srcCompat="@drawable/poland_flag" />
+            app:srcCompat="@drawable/usa_flag" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

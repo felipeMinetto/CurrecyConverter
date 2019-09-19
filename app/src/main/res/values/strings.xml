@@ -3,4 +3,5 @@
     <string name="zero">0</string>
     <string name="pln">PLN</string>
     <string name="usd">USD</string>
+    <string name="currency_format">"%.3f"</string>
 </resources>
