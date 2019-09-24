@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.fsm.currencyconverter.data.RatesRepository
 import com.fsm.currencyconverter.model.RateModel
-import com.fsm.currencyconverter.usecase.ConvertionUseCase
+import com.fsm.currencyconverter.usecase.ConvertionHelper
 import kotlinx.coroutines.*
 
 class CurrencyConverterViewModel : ViewModel() {
@@ -29,23 +29,23 @@ class CurrencyConverterViewModel : ViewModel() {
     }
 
     fun updatedBaseCurrencyValue(value: String) {
-        ConvertionUseCase.getConvertedValueFromString(value, rate)?.let {
+        ConvertionHelper.getConvertedValueFromString(value, rate)?.let {
             convertedValue.value = it
         }
     }
 
     fun updatedCurrencyValue(value: String) {
-        ConvertionUseCase.getBaseValueFromString(value, rate)?.let {
+        ConvertionHelper.getBaseValueFromString(value, rate)?.let {
             baseValue.value = it
         }
     }
 
     fun getFormattedBaseValue(): String {
-        return ConvertionUseCase.getFormattedValue(baseValue.value)
+        return ConvertionHelper.getFormattedValue(baseValue.value)
     }
 
     fun getFormattedConvertedValue(): String {
-        return ConvertionUseCase.getFormattedValue(convertedValue.value)
+        return ConvertionHelper.getFormattedValue(convertedValue.value)
     }
 
     override fun onCleared() {
