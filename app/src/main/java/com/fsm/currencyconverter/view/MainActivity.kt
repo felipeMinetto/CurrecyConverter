@@ -1,9 +1,7 @@
 package com.fsm.currencyconverter.view
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.text.TextWatcher
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
@@ -12,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.fsm.currencyconverter.R
 import com.fsm.currencyconverter.databinding.ActivityMainBinding
 import com.fsm.currencyconverter.viewmodel.CurrencyConverterViewModel
+import java.util.*
+import kotlin.concurrent.schedule
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         ViewModelProviders.of(this).get(CurrencyConverterViewModel::class.java)
     }
 
+    private var task: TimerTask? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,12 +36,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        viewModel.cancelRateloader()
+        task?.cancel()
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.loadRate()
+        task = Timer().schedule(0L, 30000) {
+            viewModel.loadRate()
+        }
     }
 
     private fun setupViews() {

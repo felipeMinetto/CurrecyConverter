@@ -10,6 +10,7 @@ class RatesRepository : KoinComponent {
 
     suspend fun loadRatesForCurrencies(from: String, to: String): RateModel {
         val rate = api.getLatestValues("$from,$to", to)
-        return RateModel(rate.rates[from] ?: 0f, from, to)
+        rate.destinaton = from
+        return rate
     }
 }
